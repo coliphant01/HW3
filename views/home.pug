@@ -1,0 +1,30 @@
+extends layouts/base.pug
+
+block content
+    .row
+        .col-md-4.list-section
+            h2 Top Customers
+            ol
+                - customers.sort((a, b) => b.TotalSales - a.TotalSales)
+                each customer, index in customers
+                    if index < 5
+                        li= (customer.CustomerName || 'N/A') + ": $" + (customer.TotalSales || 0)
+            a.btn.btn-primary(href='/customers') Show All
+
+        .col-md-4.list-section
+            h2 Top Products
+            ol
+                - products.sort((a, b) => b.TotalSales - a.TotalSales)
+                each product, index in products
+                    if index < 5
+                        li= (product.ItemName || 'N/A') + ": $" + (product.TotalSales || 0)
+            a.btn.btn-primary(href='/products') Show All
+
+        .col-md-4.list-section
+            h2 Sales by Month
+            ol
+                - sales.sort((a, b) => b.TotalSales - a.TotalSales)
+                each sale, index in sales
+                    if index < 5
+                        li= (sale.Date || 'N/A') + ": $" + (sale.TotalSales || 0)
+            a.btn.btn-primary(href='/sales') Show All

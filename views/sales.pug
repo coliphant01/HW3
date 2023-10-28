@@ -1,0 +1,21 @@
+extends layouts/base.pug
+
+block content
+    h1 Sales
+
+    table.table
+        thead
+            tr
+                th Date of Sale
+                th Customer
+                th Product
+                th Quantity
+                th Total Sales
+        tbody
+            each sale in sales
+                tr
+                    td= sale.SalesDate || 'N/A'
+                    td= sale.CustomerName || 'N/A'
+                    td= sale.Product || 'N/A'
+                    td= sale.Quantity || 0
+                    td= `$${(sale.TotalSales && sale.TotalSales.toFixed(2)) || 0}`

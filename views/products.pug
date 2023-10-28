@@ -1,0 +1,17 @@
+extends layouts/base.pug
+
+block content
+    h1 Products
+
+    table.table
+        thead
+            tr
+                th Product Name
+                th Price
+        tbody
+            each product in items
+                tr
+                    td= product.ItemName|| 'N/A'
+                    td= `$${product.ItemPrice || 0}`
+
+    button.btn.btn-primary Insert New Product
