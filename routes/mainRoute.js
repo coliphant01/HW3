@@ -8,8 +8,7 @@ const itemController = require('../controllers/itemController');
 const salesController = require('../controllers/salesController');
 
 // Route for Home
-router.get('/', homeController.getHome); // Updated to use homeController
-router.get('/home', homeController.getHome);
+router.get('/', homeController.getHomePage); // Updated to use homeController
 router.get('/products', itemController.getAllItems);
 
 

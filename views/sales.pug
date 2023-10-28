@@ -16,6 +16,6 @@ block content
                 tr
                     td= sale.SalesDate || 'N/A'
                     td= sale.CustomerName || 'N/A'
-                    td= sale.Product || 'N/A'
+                    td= sale.ItemName || 'N/A'
                     td= sale.Quantity || 0
                     td= `$${(sale.TotalSales && sale.TotalSales.toFixed(2)) || 0}`

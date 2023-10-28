@@ -1,7 +1,7 @@
 const Sales = require('../models/salesModel');
 
 exports.getAllSales = (req, res, next) => {
-    Sales.fetchAll()
+    Sales.fetchCurrentMonthSales()
         .then(([sales, fieldData]) => {
             res.render('sales', {
                 sales: sales,

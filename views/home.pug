@@ -8,7 +8,7 @@ block content
                 - customers.sort((a, b) => b.TotalSales - a.TotalSales)
                 each customer, index in customers
                     if index < 5
-                        li= (customer.CustomerName || 'N/A') + ": $" + (customer.TotalSales || 0)
+                        li= (customer.CustomerName || 'N/A') + ": $" + (customer.TotalSales)
             a.btn.btn-primary(href='/customers') Show All
 
         .col-md-4.list-section
@@ -17,7 +17,7 @@ block content
                 - products.sort((a, b) => b.TotalSales - a.TotalSales)
                 each product, index in products
                     if index < 5
-                        li= (product.ItemName || 'N/A') + ": $" + (product.TotalSales || 0)
+                        li= (product.ItemName || 'N/A') + ": $" + (product.TotalSales)
             a.btn.btn-primary(href='/products') Show All
 
         .col-md-4.list-section
@@ -26,5 +26,9 @@ block content
                 - sales.sort((a, b) => b.TotalSales - a.TotalSales)
                 each sale, index in sales
                     if index < 5
-                        li= (sale.Date || 'N/A') + ": $" + (sale.TotalSales || 0)
+                        - let dateParts = sale.Date.split('-');
+                        - let monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+                        - let formattedDate = monthNames[parseInt(dateParts[1]) - 1] + ' ' + dateParts[0];
+                        li= formattedDate + ": $" + (sale.TotalSales)
+
             a.btn.btn-primary(href='/sales') Show All
