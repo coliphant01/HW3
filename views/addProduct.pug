@@ -1,0 +1,15 @@
+extends layouts/base.pug
+
+block content
+    h1 Add New Product
+
+    form(action='/add-product' method='post')
+        div.form-group
+            label(for='productName') Product Name
+            input#productName.form-control(type='text', name='ItemName', required)
+
+        div.form-group
+            label(for='productPrice') Product Price
+            input#productPrice.form-control(type='number', name='ItemPrice', step='0.01', required)
+
+        button.btn.btn-primary(type='submit') Save Product

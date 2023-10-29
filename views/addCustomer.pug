@@ -1,0 +1,17 @@
+extends layouts/base.pug
+
+block content
+    h1 Add New Customer
+
+    form(method="post" action="/add-customer")
+        div.form-group
+            label(for="name") Name:
+            input#name.form-control(type="text" name="name" required)
+
+        div.form-group
+            label(for="email") Email:
+            input#email.form-control(type="email" name="email" required)
+
+        button.btn.btn-primary(type="submit") Save
+
+    a(href="/customers") Back to Customers List

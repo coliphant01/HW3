@@ -14,4 +14,5 @@ block content
                     td= product.ItemName|| 'N/A'
                     td= `$${product.ItemPrice || 0}`
 
-    button.btn.btn-primary Insert New Product
+    a(href='/add-product')
+        button.btn.btn-primary Insert New Product

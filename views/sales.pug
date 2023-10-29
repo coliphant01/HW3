@@ -14,8 +14,8 @@ block content
         tbody
             each sale in sales
                 tr
-                    td= sale.SalesDate || 'N/A'
+                    td= (sale.SalesDate && sale.SalesDate.toISOString().split('T')[0]) || 'N/A'
                     td= sale.CustomerName || 'N/A'
                     td= sale.ItemName || 'N/A'
                     td= sale.Quantity || 0
-                    td= `$${(sale.TotalSales && sale.TotalSales.toFixed(2)) || 0}`
+                    td= `$${(sale.TotalSales && Number(sale.TotalSales).toFixed(2)) || 0}`

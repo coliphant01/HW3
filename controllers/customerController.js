@@ -38,33 +38,23 @@ exports.getAddCustomer = (req, res, next) => {
     });
 };
 
-exports.postAddCustomer = (req, res, next) => {
-    const customer = new Customer(null, req.body.name, req.body.email);
-    customer.save()
-        .then(() => {
-            res.redirect('/customers');
-        })
-        .catch(err => {
-            console.log(err);
-        });
-};
-
 exports.getEditCustomer = (req, res, next) => {
     Customer.findById(req.params.id)
         .then(([customer, fieldData]) => {
             if (customer.length > 0) {
-                res.render('customer/edit', {
+                res.render('edit', {
                     customer: customer[0],
                     pageTitle: 'Edit Customer'
                 });
             } else {
-                res.redirect('/customers');
+                res.redirect('/customers'); // Redirect back to list if ID not found
             }
         })
         .catch(err => {
             console.log(err);
         });
 };
+
 
 exports.postEditCustomer = (req, res, next) => {
     const customer = new Customer(req.body.id, req.body.name, req.body.email);
@@ -86,6 +76,24 @@ exports.deleteCustomer = (req, res, next) => {
             console.log(err);
         });
 };
+
+exports.getAddCustomer = (req, res, next) => {
+    res.render('addCustomer', {
+        pageTitle: 'Add Customer'
+    });
+};
+
+exports.postAddCustomer = (req, res, next) => {
+    const customer = new Customer(null, req.body.name, req.body.email);
+    customer.save()
+        .then(() => {
+            res.redirect('/customers');
+        })
+        .catch(err => {
+            console.log(err);
+        });
+};
+
 
 
 

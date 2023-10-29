@@ -84,3 +84,25 @@ exports.deleteItem = (req, res, next) => {
             console.log(err);
         });
 };
+
+exports.getAddItem = (req, res, next) => {
+    res.render('addProduct', {
+        pageTitle: 'Add New Product'
+    });
+};
+
+exports.postAddItem = (req, res, next) => {
+    const productName = req.body.ItemName;
+    const productPrice = req.body.ItemPrice;
+    // Capture other fields as necessary
+
+    const product = new Item(null, productName, productPrice); // Adjust constructor accordingly
+    product.save()
+        .then(() => {
+            res.redirect('/products'); // Redirect to the product list page after adding
+        })
+        .catch(err => {
+            console.log(err);
+        });
+};
+

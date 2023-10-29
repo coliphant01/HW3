@@ -1,0 +1,16 @@
+extends layouts/base.pug
+
+block content
+    h1 Edit Customer
+
+    form(action=`/customers/${customer.CustomerID}/edit` method="post")
+        div.form-group
+            label(for="name") Name:
+            input#name.form-control(type="text" name="name" value=customer.CustomerName required)
+        div.form-group
+            label(for="email") Email:
+            input#email.form-control(type="email" name="email" value=customer.CustomerEmail required)
+        input(type="hidden" name="id" value=customer.CustomerID)
+        button.btn.btn-primary(type="submit") Update
+
+    a(href="/customers") Cancel

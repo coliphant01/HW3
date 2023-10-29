@@ -17,6 +17,5 @@ block content
                     td= customer.CustomerEmail || 'N/A'
                     td= `$${customer.TotalSales || 0}`
                     td
-                        a.btn.btn-primary(href=`/customers/${customer.id}/edit`) Update
-
-    button.btn.btn-primary Insert New Customer
+                        a.btn.btn-primary(href=`/customers/${customer.CustomerID}/edit`) Update
+    a.btn.btn-primary(href='/add-customer') Insert New Customer
