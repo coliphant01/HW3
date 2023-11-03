@@ -9,7 +9,7 @@ block content
                 each customer, index in customers
                     if index < 5
                         li= (customer.CustomerName || 'N/A') + ": $" + (customer.TotalSales)
-            a.btn.btn-primary(href='/customers') Show All
+            a.btn.btn-secondary(href='/customers') Show All
 
         .col-md-4.list-section
             h2 Top Products
@@ -18,7 +18,7 @@ block content
                 each product, index in products
                     if index < 5
                         li= (product.ItemName || 'N/A') + ": $" + (product.TotalSales)
-            a.btn.btn-primary(href='/products') Show All
+            a.btn.btn-secondary(href='/products') Show All
 
         .col-md-4.list-section
             h2 Sales by Month
@@ -31,4 +31,4 @@ block content
                         - let formattedDate = monthNames[parseInt(dateParts[1]) - 1] + ' ' + dateParts[0];
                         li= formattedDate + ": $" + (sale.TotalSales)
 
-            a.btn.btn-primary(href='/sales') Show All
+            a.btn.btn-secondary(href='/sales') Show All

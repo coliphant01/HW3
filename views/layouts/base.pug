@@ -3,10 +3,11 @@ html
     head
         title Happy Harry's Hardware
         link(href="/css/bootstrap.css", rel="stylesheet")
+        link(href="/css/main.css", rel="stylesheet")
         script(src="/js/bootstrap.js", type="application/javascript")
 
-    body
-        nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.static-top
+    body.bg-warning
+        nav.navbar.navbar-expand-lg.navbar-dark.bg-info.static-top
             .container
                 a.navbar-brand(href='#')
                     img(src='imgs/capybara.jpg', alt='My Logo', height='50')
@@ -15,13 +16,13 @@ html
                 #navbarSupportedContent.collapse.navbar-collapse
                     ul.navbar-nav.ms-auto
                         li.nav-item
-                            a.nav-link(href="/") Home
+                            a.nav-link(href="/" class=(current === 'home' ? 'active' : '')).text-dark Home
                         li.nav-item
-                            a.nav-link(href="/customers") Customers
+                            a.nav-link(href="/customers" class=(current === 'customers' ? 'active' : '')).text-dark Customers
                         li.nav-item
-                            a.nav-link(href="/products") Products
+                            a.nav-link(href="/products" class=(current === 'products' ? 'active' : '')).text-dark Products
                         li.nav-item
-                            a.nav-link(href="/sales") Sales
+                            a.nav-link(href="/sales" class=(current === 'sales' ? 'active' : '')).text-dark Sales
 
-        .container.mt-5
+        .container
             block content

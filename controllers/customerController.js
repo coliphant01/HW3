@@ -7,7 +7,8 @@ exports.getAllCustomers = (req, res, next) => {
         .then(([customers, fieldData]) => {
             res.render('customers', {
                 customers: customers,
-                pageTitle: 'All Customers'
+                pageTitle: 'All Customers',
+                current: 'customers'
             });
         })
         .catch(err => {
@@ -21,10 +22,11 @@ exports.getCustomerById = (req, res, next) => {
             if (customer.length > 0) {
                 res.render('customer/detail', {
                     customer: customer[0],
-                    pageTitle: 'Customer Details'
+                    pageTitle: 'Customer Details',
+                    current: 'customers'
                 });
             } else {
-                res.redirect('/customers'); // Redirect back to list if ID not found
+                res.redirect('/customers');
             }
         })
         .catch(err => {
@@ -34,7 +36,8 @@ exports.getCustomerById = (req, res, next) => {
 
 exports.getAddCustomer = (req, res, next) => {
     res.render('customer/add', {
-        pageTitle: 'Add Customer'
+        pageTitle: 'Add Customer',
+        current: 'customers'
     });
 };
 
@@ -44,10 +47,11 @@ exports.getEditCustomer = (req, res, next) => {
             if (customer.length > 0) {
                 res.render('edit', {
                     customer: customer[0],
-                    pageTitle: 'Edit Customer'
+                    pageTitle: 'Edit Customer',
+                    current: 'customers'
                 });
             } else {
-                res.redirect('/customers'); // Redirect back to list if ID not found
+                res.redirect('/customers');
             }
         })
         .catch(err => {
@@ -67,19 +71,10 @@ exports.postEditCustomer = (req, res, next) => {
         });
 };
 
-exports.deleteCustomer = (req, res, next) => {
-    Customer.deleteById(req.body.id)
-        .then(() => {
-            res.redirect('/customers');
-        })
-        .catch(err => {
-            console.log(err);
-        });
-};
-
 exports.getAddCustomer = (req, res, next) => {
     res.render('addCustomer', {
-        pageTitle: 'Add Customer'
+        pageTitle: 'Add Customer',
+        current: 'customers'
     });
 };
 

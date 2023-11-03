@@ -3,13 +3,13 @@ extends layouts/base.pug
 block content
     h1 Customers
 
-    table.table
+    table.table.table-striped
         thead
             tr
-                th Name
-                th Email
-                th Total Sales ($)
-                th
+                th.bg-info.text-white Name
+                th.bg-info.text-white Email
+                th.bg-info.text-white Total Sales ($)
+                th.bg-info.text-white
         tbody
             each customer in customers
                 tr
@@ -17,5 +17,5 @@ block content
                     td= customer.CustomerEmail || 'N/A'
                     td= `$${customer.TotalSales || 0}`
                     td
-                        a.btn.btn-primary(href=`/customers/${customer.CustomerID}/edit`) Update
-    a.btn.btn-primary(href='/add-customer') Insert New Customer
+                        a.btn.btn-secondary(href=`/customers/${customer.CustomerID}/edit`) Update
+    a.btn.btn-secondary(href='/add-customer') Insert New Customer

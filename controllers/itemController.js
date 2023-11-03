@@ -5,7 +5,8 @@ exports.getAllItems = (req, res, next) => {
         .then(([items, fieldData]) => {
             res.render('products', {
                 items: items,
-                pageTitle: 'All Items'
+                pageTitle: 'All Items',
+                current: 'products'
             });
         })
         .catch(err => {
@@ -19,10 +20,11 @@ exports.getItemById = (req, res, next) => {
             if (item.length > 0) {
                 res.render('item/detail', {
                     item: item[0],
-                    pageTitle: 'Item Details'
+                    pageTitle: 'Item Details',
+                    current: 'products'
                 });
             } else {
-                res.redirect('/items'); // Redirect back to list if ID not found
+                res.redirect('/items');
             }
         })
         .catch(err => {
@@ -32,7 +34,8 @@ exports.getItemById = (req, res, next) => {
 
 exports.getAddItem = (req, res, next) => {
     res.render('item/add', {
-        pageTitle: 'Add Item'
+        pageTitle: 'Add Item',
+        current: 'products'
     });
 };
 
@@ -53,7 +56,8 @@ exports.getEditItem = (req, res, next) => {
             if (item.length > 0) {
                 res.render('item/edit', {
                     item: item[0],
-                    pageTitle: 'Edit Item'
+                    pageTitle: 'Edit Item',
+                    current: 'products'
                 });
             } else {
                 res.redirect('/items');
@@ -64,42 +68,22 @@ exports.getEditItem = (req, res, next) => {
         });
 };
 
-exports.postEditItem = (req, res, next) => {
-    const item = new Item(req.body.id, req.body.name, req.body.price);
-    item.update()
-        .then(() => {
-            res.redirect('/items');
-        })
-        .catch(err => {
-            console.log(err);
-        });
-};
-
-exports.deleteItem = (req, res, next) => {
-    Item.deleteById(req.body.id)
-        .then(() => {
-            res.redirect('/items');
-        })
-        .catch(err => {
-            console.log(err);
-        });
-};
-
 exports.getAddItem = (req, res, next) => {
     res.render('addProduct', {
-        pageTitle: 'Add New Product'
+        pageTitle: 'Add New Product',
+        current: 'products'
     });
 };
 
 exports.postAddItem = (req, res, next) => {
     const productName = req.body.ItemName;
     const productPrice = req.body.ItemPrice;
-    // Capture other fields as necessary
 
-    const product = new Item(null, productName, productPrice); // Adjust constructor accordingly
+
+    const product = new Item(null, productName, productPrice);
     product.save()
         .then(() => {
-            res.redirect('/products'); // Redirect to the product list page after adding
+            res.redirect('/products');
         })
         .catch(err => {
             console.log(err);

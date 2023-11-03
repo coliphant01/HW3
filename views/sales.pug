@@ -3,14 +3,14 @@ extends layouts/base.pug
 block content
     h1 Sales
 
-    table.table
+    table.table.table-striped
         thead
             tr
-                th Date of Sale
-                th Customer
-                th Product
-                th Quantity
-                th Total Sales
+                th.bg-info.text-white Date of Sale
+                th.bg-info.text-white Customer
+                th.bg-info.text-white Product
+                th.bg-info.text-white Quantity
+                th.bg-info.text-white Total Sales
         tbody
             each sale in sales
                 tr

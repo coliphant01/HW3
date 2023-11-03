@@ -3,11 +3,11 @@ extends layouts/base.pug
 block content
     h1 Products
 
-    table.table
+    table.table.table-striped
         thead
             tr
-                th Product Name
-                th Price
+                th.bg-info.text-white Product Name
+                th.bg-info.text-white Price
         tbody
             each product in items
                 tr
@@ -15,4 +15,4 @@ block content
                     td= `$${product.ItemPrice || 0}`
 
     a(href='/add-product')
-        button.btn.btn-primary Insert New Product
+        button.btn.btn-secondary Insert New Product

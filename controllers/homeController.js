@@ -19,7 +19,8 @@ exports.getHomePage = (req, res, next) => {
             res.render('home', {
                 customers: fetchedCustomers,
                 products: fetchedProducts,
-                sales: fetchedSales
+                sales: fetchedSales,
+                current: 'home'
             });
         })
         .catch(err => {
